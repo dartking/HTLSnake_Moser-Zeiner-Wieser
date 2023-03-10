@@ -147,21 +147,25 @@ public class SnakeGame extends GameWindowBase<String> {
     public Boolean inSnake(ArrayList<WindowElementItem> snakeBody) {
         // STUDENT TODO: Implement a method to check if a head of the provided snake body hit
         // another snake body
-        int posHeadX = snakeBody.get(0).getX();
-        int posHeadY = snakeBody.get(0).getY();
+        if (snakeBody.size() == 0) {
+            return false;
+        } else {
 
-        for (int i = 1; i < snakeBodyPlayer0.size(); i++) {
-            if (snakeBody.get(i).getX() == posHeadX && snakeBody.get(i).getY() == posHeadY) {
-                return true;
+            int posHeadX = snakeBody.get(0).getX();
+            int posHeadY = snakeBody.get(0).getY();
+
+            for (int i = 1; i < snakeBodyPlayer0.size(); i++) {
+                if (snakeBodyPlayer0.get(i).getX() == posHeadX && snakeBodyPlayer0.get(i).getY() == posHeadY) {
+                    return true;
+                }
+            }
+
+            for (int i = 1; i < snakeBodyPlayer1.size(); i++) {
+                if (snakeBodyPlayer1.get(i).getX() == posHeadX && snakeBodyPlayer1.get(i).getY() == posHeadY) {
+                    return true;
+                }
             }
         }
-
-        for (int i = 1; i < snakeBodyPlayer1.size(); i++) {
-            if (snakeBody.get(i).getX() == posHeadX && snakeBody.get(i).getY() == posHeadY) {
-                return true;
-            }
-        }
-
         return false;
     }
 
